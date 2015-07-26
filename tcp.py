@@ -23,7 +23,7 @@ def handle_client(client_socket):
     #send back a packet
     client_socket.send("ACK!")
 
-    client.socket.close()
+    client_socket.close()
 
 
 while True:
@@ -32,5 +32,7 @@ while True:
 
     print "(*) Accepted connection from: %s:%d" % (addr[0], addr[1])
 
+
     #sping up our client thread to handle incoming data
     client_handler = threading.Thread(target=handle_client, args=(client,))
+    client_handler.start()
